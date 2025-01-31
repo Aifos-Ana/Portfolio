@@ -53,20 +53,44 @@
         });
     });
 
-    // Swiper Initialization
-    const swiper = new Swiper('.project-swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 30,
-        pagination: { 
-            el: '.swiper-pagination',
-            clickable: true 
+// Initialize Swiper
+const projectSwiper = new Swiper('.project-swiper', {
+    loop: false,
+    slidesPerView: 1,
+    centeredSlides: true,
+    spaceBetween: 30,
+    observer: true, // Watch for DOM changes
+    observeParents: true, // Watch parent elements too
+    observeSlideChildren: true, // Watch child elements in slides
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        576: {
+            slidesPerView: 1,
         },
-        breakpoints: {
-            768: { slidesPerView: 1.2 },
-            1024: { slidesPerView: 1.5 }
+        992: {
+            slidesPerView: 2,
+            spaceBetween: 50
         }
+    }
+});
+
+// Nested image swipers
+document.querySelectorAll('.image-swiper').forEach(swiper => {
+    new Swiper(swiper, {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
+});
 
     // Mobile Menu Handling
     const navbarCollapse = document.getElementById('navbarNav');
@@ -97,77 +121,5 @@
                 document.documentElement.classList.add('dark-theme');
                 themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
             }
-            // Initialize particles after slight delay to ensure DOM ready
-            setTimeout(initParticles, 100);
         };
-    
-        // Modified initParticles function
-        const initParticles = () => {
-            const isDarkTheme = document.documentElement.classList.contains('dark-theme');
-            const particleColor = isDarkTheme ? '#ffffff' : '#000000';
-    
-            // Ensure proper cleanup
-            if (particlesInstance) {
-                particlesInstance.pJS.fn.vendors.destroy();
-                const canvas = document.getElementById('particles-js').querySelector('canvas');
-                if (canvas) canvas.remove();
-                particlesInstance = null;
-            }
-    
-            // Re-initialize with new configuration
-            particlesInstance = particlesJS('particles-js', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: particleColor },
-                    shape: { type: "circle" },
-                    opacity: {
-                        value: 0.5,
-                        random: false,
-                        anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-                    },
-                    size: {
-                        value: 3,
-                        random: true,
-                        anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-                    },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: particleColor,
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        enable: true,
-                        speed: 6,
-                        direction: "none",
-                        random: false,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: { enable: false, rotateX: 600, rotateY: 1200 }
-                    }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: { enable: true, mode: "repulse" },
-                        onclick: { enable: true, mode: "push" },
-                        resize: true
-                    },
-                    modes: {
-                        repulse: { distance: 200, duration: 0.4 },
-                        push: { particles_nb: 4 }
-                    }
-                },
-                retina_detect: true
-            });
-    
-            // Force canvas redraw
-            if (particlesInstance && particlesInstance.pJS && particlesInstance.pJS.canvas) {
-                particlesInstance.pJS.canvas.pJS.fn.particlesRefresh();
-            }
-        };
-    
-        // ... rest of your existing code ...
     });

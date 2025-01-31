@@ -1,11 +1,15 @@
+/* style.css */
+/* ==== Root Variables ==== */
 :root {
-    --primary-color: #2A5C82;
+    --primary-color: #9AA6B2;
     --secondary-color: #3A86A8;
     --accent-color: #F2A341;
     --background-color: #F8F9FA;
-    --text-color: #333333;
-    --header-bg: rgba(255, 255, 255, 0.95);
-    --card-bg: #FFFFFF;
+    --text-color: #000000;
+    --header-bg: #D9EAFD;
+    --card-bg: #BCCCDC;
+    --card-border: #BCCCDC;
+    --card-shadow: rgba(0, 0, 0, 0.05);
     --border-color: #E0E0E0;
 }
 
@@ -14,12 +18,15 @@
     --secondary-color: #5FB3E6;
     --accent-color: #FFB347;
     --background-color: #1A1A1A;
-    --text-color: #FFFFFF;
+    --text-color: #e5e5e5;
     --header-bg: rgba(30, 30, 30, 0.95);
-    --card-bg: #2D2D2D;
+    --card-bg: #2a2a2a;
+    --card-border: #3d3d3d;
+    --card-shadow: rgba(0, 0, 0, 0.2);
     --border-color: #404040;
 }
 
+/* ==== Base Styles ==== */
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
@@ -27,26 +34,28 @@ body {
     overflow-x: hidden;
 }
 
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+/* ==== Navigation Styles ==== */
 .navbar-custom {
     background: var(--header-bg) !important;
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --bs-navbar-color: var(--text-color) !important;
-    --bs-navbar-hover-color: var(--primary-color) !important;
-    --bs-navbar-active-color: var(--primary-color) !important;
-    display: grid;
-    justify-content: center;
+    --bs-navbar-color: var(--text-color);
+    --bs-navbar-hover-color: var(--primary-color);
+    --bs-navbar-active-color: var(--primary-color);
 }
 
 .navbar-brand.logo {
     font-size: 1.75rem;
     color: var(--primary-color) !important;
     font-weight: 700;
-}
-
-.nav-link {
-    position: relative;
-    padding: 0.5rem 1rem !important;
 }
 
 .nav-link.active::before {
@@ -68,44 +77,256 @@ body {
     100% { transform: translateX(-50%) scale(1); }
 }
 
-.card-custom {
+/* ==== Swiper Carousel Styles ==== */
+.project-swiper {
+    padding: 2rem 1rem;
+    overflow: visible;
+}
+
+.swiper-slide {
+    width: 85%;
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color);
+    background: var(--card-bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.2rem;
+}
+
+.swiper-pagination-bullet {
+    background: var(--text-color);
+    opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary-color);
+    opacity: 1;
+}
+
+/* ==== Project Cards ==== */
+.compact-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
     background: var(--card-bg) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 12px !important;
+    border: 1px solid var(--card-border) !important;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.compact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--card-shadow);
+}
+
+.project-image-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    transition: transform 0.4s ease;
+}
+
+.compact-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.compact-card .card-body {
+    padding: 1.5rem;
+}
+
+.card-body.text-center{
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text-color);
+}
+
+.card.card-custom.h-100{
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text-color);
+}
+
+.tech-stack .badge {
+    font-size: 0.8rem;
+    padding: 0.5em 0.8em;
+    margin: 0 0.3em 0.3em 0;
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.tech-stack .badge:hover {
+    background: var(--primary-color);
+    color: white !important;
+    border-color: var(--primary-color);
+}
+
+/* ==== Text & Typography ==== */
+.card-text {
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.h5{
+    color: var(--primary-color);
+}
+
+/* ==== Contact Section ==== */
+.contact .card-custom {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--card-border) !important;
+    background: var(--card-bg) !important;
+}
+
+.contact .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+}
+
+.contact .card-body i {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
-.card-custom:hover {
-    transform: translateY(-5px);
+.contact .card-body:hover i {
+    transform: scale(1.1);
 }
 
-.skill-badge {
-    background: var(--background-color) !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 20px !important;
-    padding: 0.6em 1.2em !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
+.contact h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
-.skill-badge:hover {
-    background: var(--primary-color) !important;
-    color: white !important;
-    border-color: var(--primary-color) !important;
+.contact p {
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 0;
 }
 
-#particles-js {
-    position: fixed;
+.contact .social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.6;
-    color: #1A1A1A;
 }
 
-.dark-theme #particles-js {
-    opacity: 0.6;
+.contact .social-links .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.contact .social-links .btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.contact .social-links .btn-dark {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.contact .social-links .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+.contact .social-links .btn i {
+    font-size: 0.9rem;
+}
+
+/* ==== Timeline Styles ==== */
+.timeline {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.timeline-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-date {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* ==== Utilities ==== */
+.scroll-progress {
+    height: 3px;
+    background: var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transition: width 0.3s ease;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .theme-toggle-container {
@@ -122,41 +343,21 @@ body {
     transition: transform 0.3s ease;
 }
 
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    border-color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.navbar-collapse {
-    display: flex;
-    justify-content: center;
-}
-
-
+/* ==== Responsive Adjustments ==== */
 @media (max-width: 768px) {
+    .swiper-slide {
+        width: 100%;
+    }
+    
+    .project-image-container {
+        height: 200px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
     .nav-link.active::before {
         bottom: auto;
         top: 50%;
@@ -167,33 +368,48 @@ body {
     .navbar-collapse {
         background: var(--header-bg);
     }
+    
+    .compact-card .card-body {
+        padding: 1rem;
+    }
+
+    .contact .col-md-4 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact .card-body {
+        padding: 1.5rem;
+    }
 }
 
-.scroll-progress {
-    height: 3px;
-    background: var(--primary-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    transition: width 0.3s ease;
-}
+@media (max-width: 576px) {
+    .project-image-container {
+        height: 180px;
+    }
+    
+    .tech-stack .badge {
+        font-size: 0.75rem;
+        padding: 0.4em 0.7em;
+    }
+    
+    .compact-card {
+        box-shadow: 0 2px 4px var(--card-shadow);
+    }
 
-.card{
-    color: var(--text-color);
-}
-
-.h5{
-    display: flex;
-    justify-content: center;
-}
-
-.card-body{
-    display: grid;
-    justify-content: center;
-}
-
-.social-button{
-    display: flex;
-    justify-content: center;
+    .contact .social-links .btn span {
+        display: none;
+    }
+    
+    .contact .social-links .btn {
+        padding: 0.5rem;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+    
+    .contact .social-links .btn i {
+        margin: 0;
+        font-size: 1rem;
+    }
 }
