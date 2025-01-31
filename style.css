@@ -413,3 +413,97 @@ body {
         font-size: 1rem;
     }
 }
+
+/* Skills Section Styling */
+#skills .section-title {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  
+  #skills .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #007bff;
+    border-radius: 2px;
+  }
+  
+  #skills .card-custom {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #skills .card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  #skills .card-body {
+    padding: 1.5rem;
+  }
+  
+  #skills h3 {
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  #skills h3 .fas {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .skill-badge {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    margin: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .skill-badge:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Dark Theme Compatibility */
+  .dark-theme #skills .card-custom {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark-theme #skills .card-custom:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dark-theme .skill-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark-theme .skill-badge:hover {
+    background: #007bff;
+    color: white;
+  }
+
+  .btn-primary > p {
+    color: var(--text-color);
+    font-family: Arial, Helvetica, sans-serif;
+  }
