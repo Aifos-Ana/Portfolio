@@ -32,32 +32,31 @@
     });
 
     // Initialize Swiper
-    const swiper = new Swiper('.project-swiper', {
-        slidesPerView: 2, // one slide per view on mobile
-        spaceBetween: 20,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+const swiper = new Swiper('.project-swiper', {
+    loop: true,  // Enables infinite scrolling
+    slidesPerView: 1,  // Always show only one slide at a time
+    centeredSlides: true,  // Ensures the active slide is centered
+    spaceBetween: 20,  // Keeps some spacing between slides
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 1,  // Keeps one slide on tablets
+            spaceBetween: 30,  // Adds a bit more spacing
         },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            992: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-            },
-            1200: {
-                slidesPerView: 1,
-                spaceBetween: 40,
-            }
+        992: {
+            slidesPerView: 1,  // Ensures one slide on larger screens too
+            spaceBetween: 40,
         }
-    });
+    }
+});
+
 
     // Mobile Menu Handling
     const navbarCollapse = document.getElementById('navbarNav');

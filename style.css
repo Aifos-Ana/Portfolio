@@ -93,6 +93,12 @@ body {
 }
 
 /* ==== Swiper Carousel Styles ==== */
+.swiper {
+    width: 100%;
+    max-width: 600px; /* Keeps a reasonable max width */
+    margin: auto;
+}
+
 .project-swiper {
     padding: 2rem 1rem;
     overflow: visible;
@@ -103,6 +109,8 @@ body {
     opacity: 0.5;
     transform: scale(0.9);
     transition: transform 0.4s ease, opacity 0.4s ease;
+    display: flex;
+    justify-content: center;
 }
 
 .swiper-slide-active {
@@ -140,6 +148,8 @@ body {
     background: var(--primary-color);
     opacity: 1;
 }
+
+
 
 /* ==== Project Cards ==== */
 .compact-card {
@@ -301,9 +311,9 @@ body {
         /* Keep a smaller but rectangular shape */
         border-radius: 6px;
         /* Prevents full circle transformation */
-        width: auto;
+        width: 100%;
         /* Allow button to resize dynamically */
-        height: auto;
+        height: 100%;
         /* Prevents forced circle shape */
         justify-content: center;
         /* Keep icons & text aligned */
@@ -599,17 +609,14 @@ html {
         box-shadow: 0 2px 4px var(--card-shadow);
     }
 
-    /* Contact social links: show only icons in buttons */
-    .contact .social-links .btn span {
-        display: none;
-    }
-
     .contact .social-links .btn {
         padding: 0.5rem;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        border-radius: 5%;
+        width: auto;
+        height: auto;
         justify-content: center;
+        margin-left: 0.5rem;
+        margin-right:  0.5rem;
     }
 
     .contact .social-links .btn i {
