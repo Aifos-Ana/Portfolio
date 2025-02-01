@@ -33,7 +33,7 @@
 
     // Initialize Swiper
     const swiper = new Swiper('.project-swiper', {
-        slidesPerView: 1, // one slide per view on mobile
+        slidesPerView: 2, // one slide per view on mobile
         spaceBetween: 20,
         pagination: {
             el: '.swiper-pagination',
