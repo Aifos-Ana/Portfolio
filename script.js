@@ -108,18 +108,3 @@ document.querySelectorAll('.image-swiper').forEach(swiper => {
             bsCollapse.hide();
         }
     });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Theme Management
-        const themeToggle = document.getElementById('themeToggle');
-        let particlesInstance = null;
-    
-        const initializeTheme = () => {
-            const savedTheme = localStorage.getItem('theme') || 
-                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if(savedTheme === 'dark') {
-                document.documentElement.classList.add('dark-theme');
-                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-            }
-        };
-    });
