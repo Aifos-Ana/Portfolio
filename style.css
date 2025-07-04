@@ -662,3 +662,33 @@ html {
         margin-bottom: 1rem;
     }
 }
+
+/* === Force all swiper slides and cards to have the same height === */
+.swiper.project-swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.swiper.project-swiper .swiper-slide {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+}
+
+.swiper.project-swiper .card.card-custom.compact-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.swiper.project-swiper .project-image-container {
+    flex-shrink: 0;
+}
+
+.swiper.project-swiper .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
