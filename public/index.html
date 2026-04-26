@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="description" content="Ana Sofia Silva Pinto — Software Engineer Portfolio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Ana Sofia Silva Pinto — Engineer</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --black:  #0a0a0a;
+        --black2: #111111;
+        --black3: #1a1a1a;
+        --red:    #e8192c;
+        --red2:   #ff3347;
+        --white:  #f0f0f0;
+        --grey:   #888888;
+        --border: rgba(240,240,240,0.07);
+        --ff-d: 'Bebas Neue', sans-serif;
+        --ff-b: 'DM Mono', monospace;
+        --nav-h: 64px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: var(--ff-b);
+        background: var(--black);
+        color: var(--white);
+        overflow-x: hidden;
+        font-size: 14px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        cursor: none;
+      }
+      a { text-decoration: none; color: inherit; }
+      img { display: block; max-width: 100%; }
+
+      /* Custom cursor */
+      #cursor {
+        width: 10px; height: 10px;
+        background: var(--red);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+        mix-blend-mode: difference;
+      }
+      #cursor-ring {
+        width: 36px; height: 36px;
+        border: 1px solid rgba(232,25,44,0.5);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 99998;
+        transform: translate(-50%, -50%);
+        transition: left 0.12s ease, top 0.12s ease, width 0.2s ease, height 0.2s ease;
+      }
+      body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 20px; height: 20px; background: var(--red2); }
+
+      /* Scanline texture */
+      body::after {
+        content: '';
+        position: fixed; inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.03) 2px,
+          rgba(0,0,0,0.03) 4px
+        );
+        pointer-events: none;
+        z-index: 9998;
+      }
+
+      #root { position: relative; z-index: 1; }
+    </style>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+    <div id="root"></div>
+    <script>
+      const cursor = document.getElementById('cursor');
+      const ring   = document.getElementById('cursor-ring');
+      document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top  = e.clientY + 'px';
+        ring.style.left   = e.clientX + 'px';
+        ring.style.top    = e.clientY + 'px';
+      });
+    </script>
+  </body>
+</html>
